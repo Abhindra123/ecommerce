@@ -1,0 +1,31 @@
+<?php
+$host = "localhost";
+$dbusername = "root";
+$dbpassword = "";
+$dbname = "ecommerce";
+$username = $_POST['username'];
+$password = $_POST['password'];
+if (!empty($username) || !empty($email) || !empty($password) )
+{
+
+$conn = new mysqli ($host, $dbusername, $dbpassword, $dbname);
+if (mysqli_connect_error()){
+  die('Connect Error ('. mysqli_connect_errno() .') '
+    . mysqli_connect_error());
+    $stmt=$con->prepare("select * from entertb where email=?");
+    $stmt->bind_param('s',email);
+    $stmt_result=$stmt->get_result();
+    if($stmt_resut->num_rows>0){
+    $data=$stmt_result->fetch_asso();
+    if($data['password']===$password){
+    echo"Login successful";
+    } else{
+    echo"Invalid password";
+    }else{
+     echo"Invalid password";
+    }
+    }
+}
+
+
+?>
